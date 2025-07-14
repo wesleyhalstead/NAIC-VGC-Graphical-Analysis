@@ -71,9 +71,12 @@ which(rowSums(!is.na(restrictedTeamsDF))!=3)
 
 
 # String Concatenation to get duo names. The order of the restricted Pokemon is done alphabetically.
-restrictedTeamsDF <- mutate(rowwise(restrictedTeamsDF), restrictedDuo = paste0(sort(c(X2,X3,X4,X5,X6,X7)),collapse = ' '))
+restrictedTeamsDF <- mutate(rowwise(restrictedTeamsDF), restrictedDuo = paste0(sort(c(X2,X3,X4,X5,X6,X7)),collapse = ' & '))
 
 
 ## Create new df with just playerName and restrictedDuo
 restrictedDuosDF <- select(restrictedTeamsDF, X1, restrictedDuo)
 restrictedDuosDF <- rename(restrictedDuosDF, playerName = X1)
+
+## Save the df as a new csv
+write.csv(restrictedDuosDF, file  = 'data/restrictedDuos.csv')
