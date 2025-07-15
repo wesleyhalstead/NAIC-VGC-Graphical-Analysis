@@ -34,13 +34,18 @@ pdf(file = 'plots/dotchart_usage.pdf',
 dotchart(as.numeric(rev(t1)),
          labels = nt1,
          cex = 0.65, pt.cex = 1,
-         pch = 20)
+         pch = 20,
+         xlab = 'Team Appearances')
   grid(nx = NULL, ny = NULL)
   
   points(as.numeric(rev(t1)), pch = 20, 1:86)
   
   text(200,1, adj = c(1,0),watermark,col = rgb(.8,.8,.8,.4),
        cex = 3)
+  
+  title(main = list(
+    'Usage Rates of Restricted Duos',
+    cex = 0.8))
 }
 dev.off()
 #####################################
@@ -106,7 +111,8 @@ pdf(file = 'plots/dotchart_placement.pdf',
 dotchart(x= rev(temp1$highestPlacement),
          labels =  rev(temp1$restrictedDuo),
          cex = 0.65, pt.cex = 1,
-         pch = 20, lcolor = rgb(0,0,0,0))
+         pch = 20, lcolor = rgb(0,0,0,0),
+         xlab = 'Place')
 
 grid(nx = NULL, ny = 87)
 
@@ -119,6 +125,10 @@ legend('bottomleft', inset = 0.01, legend = c('Highest Placement','Median Placem
 
 text(1100,1, adj = c(1,0),watermark,col = rgb(.8,.8,.8,.4),
      cex = 3)
+
+title(main = list(
+  'Placement Summaries of Restricted Duos',
+  cex = 0.8))
 }
 dev.off()
 #######################################################
