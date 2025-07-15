@@ -53,7 +53,7 @@ pdf(file = 'plots/dotchart_winrate.pdf',
 dotchart(x = winPercent,
          labels = names(winPercent),
          cex = 0.65, pt.cex = 1,
-         pch = 20, lcolor = rgb(0,0,0,0))
+         pch = 20, lcolor = rgb(0,0,0,0),,xlab = 'Win Rate')
 title(main = list(
   'Win Rate of Restricted Duos',
   cex = .8))
@@ -88,7 +88,7 @@ dotchart(x = winPercent2,
          labels = names(winPercent2),
          cex = 0.65, pt.cex = 1,
          pch = 20, lcolor = rgb(0,0,0,0),
-         xlim = c(min(lowerBound),max(upperBound)))
+         xlim = c(min(lowerBound),max(upperBound)),xlab = 'Win Rate')
 title(main = list(
   '95% Pairwise Confidence Intervals for the Win Rate of Restriced Duos\nfor Teams with at Least 10 Wins and 10 Losses',
   cex = 0.8))
