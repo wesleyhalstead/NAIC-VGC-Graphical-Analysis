@@ -18,8 +18,8 @@ t1 <- sort(table(restrictedDuos$restrictedDuo), decreasing = T)
 
 
 ## Pie chart
-pie(t1,
-    labels = names(t1)[1:9])
+# pie(t1,
+#     labels = names(t1)[1:9])
 
 
 ## Producing dotchart of usage rates
@@ -53,44 +53,44 @@ restrictedDuosPlacement <- restrictedDuos %>% group_by(restrictedDuo) %>% summar
 
 ## Commenting old work out
 {
-"{
-dotchart(x= rev(pull(restrictedDuosPlacement, avgPlacement)),
-         labels =  rev(pull(restrictedDuosPlacement, restrictedDuo)),
-         cex = 0.65, pt.cex = 1,
-         pch = 1)
-abline(v = (1:5)*200, lty = 2,  col = rgb(1,0,0, alpha = 0.6),
-       lwd = 1.5)
-abline(v = (1:5)*200+100, lty = 2, col = rgb(1,0,0, alpha = 0.2),
-       lwd = 1.5)
-  }
-
-restrictedDuosPlacement <- restrictedDuosPlacement %>% arrange((medPlacement))
-{
-  dotchart(x= rev(pull(restrictedDuosPlacement, medPlacement)),
-           labels =  rev(pull(restrictedDuosPlacement, restrictedDuo)),
-           cex = 0.65, pt.cex = 1,
-           pch = 1)
-  abline(v = (1:5)*200, lty = 2,  col = rgb(1,0,0, alpha = 0.6),
-         lwd = 1.5)
-  abline(v = (1:5)*200+100, lty = 2, col = rgb(1,0,0, alpha = 0.2),
-         lwd = 1.5)
-}"
+# {
+# dotchart(x= rev(pull(restrictedDuosPlacement, avgPlacement)),
+#          labels =  rev(pull(restrictedDuosPlacement, restrictedDuo)),
+#          cex = 0.65, pt.cex = 1,
+#          pch = 1)
+# abline(v = (1:5)*200, lty = 2,  col = rgb(1,0,0, alpha = 0.6),
+#        lwd = 1.5)
+# abline(v = (1:5)*200+100, lty = 2, col = rgb(1,0,0, alpha = 0.2),
+#        lwd = 1.5)
+#   }
+# 
+# restrictedDuosPlacement <- restrictedDuosPlacement %>% arrange((medPlacement))
+# {
+#   dotchart(x= rev(pull(restrictedDuosPlacement, medPlacement)),
+#            labels =  rev(pull(restrictedDuosPlacement, restrictedDuo)),
+#            cex = 0.65, pt.cex = 1,
+#            pch = 1)
+#   abline(v = (1:5)*200, lty = 2,  col = rgb(1,0,0, alpha = 0.6),
+#          lwd = 1.5)
+#   abline(v = (1:5)*200+100, lty = 2, col = rgb(1,0,0, alpha = 0.2),
+#          lwd = 1.5)
+# }
 }
 
 restrictedDuosPlacement <- restrictedDuosPlacement %>% arrange((highestPlacement))
 
 ## Commenting old work out
 {
-"{
-  dotchart(x= rev(pull(restrictedDuosPlacement, highestPlacement)),
-           labels =  rev(pull(restrictedDuosPlacement, restrictedDuo)),
-           cex = 0.65, pt.cex = 1,
-           pch = 1)
-  abline(v = (0:5)*200, lty = 2,  col = rgb(1,0,0, alpha = 0.6),
-         lwd = 1.5)
-  abline(v = (0:5)*200+100, lty = 2, col = rgb(1,0,0, alpha = 0.2),
-         lwd = 1.5)
-}"
+# {
+#   dotchart(x= rev(pull(restrictedDuosPlacement, highestPlacement)),
+#            labels =  rev(pull(restrictedDuosPlacement, restrictedDuo)),
+#            cex = 0.65, pt.cex = 1,
+#            pch = 1)
+#   abline(v = (0:5)*200, lty = 2,  col = rgb(1,0,0, alpha = 0.6),
+#          lwd = 1.5)
+#   abline(v = (0:5)*200+100, lty = 2, col = rgb(1,0,0, alpha = 0.2),
+#          lwd = 1.5)
+# }
 }
 
 
