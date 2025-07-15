@@ -1,3 +1,6 @@
+### Watermark to be used
+watermark = 'HALSTEAD'
+
 ### Packages
 library(tidyverse)
 
@@ -20,6 +23,7 @@ pie(t1,
 
 
 ## Producing dotchart of usage rates
+####################################
 nt1 <- names(rev(t1))
 
 pdf(file = 'plots/dotchart_usage.pdf',
@@ -34,8 +38,12 @@ dotchart(as.numeric(rev(t1)),
   grid(nx = NULL, ny = NULL)
   
   points(as.numeric(rev(t1)), pch = 20, 1:86)
+  
+  text(200,1, adj = c(1,0),watermark,col = rgb(.8,.8,.8,.4),
+       cex = 3)
 }
 dev.off()
+#####################################
 
 ## Producing dotchart of placement
 restrictedDuosPlacement <- restrictedDuos %>% group_by(restrictedDuo) %>% summarise(avgPlacement = mean(X),
@@ -103,6 +111,9 @@ points(temp1$highestPlacement,86:1, pch = 20)
 
 legend(1,8, legend = c('Highest Placement','Median Placement','Mean Placement'),
        cex = 0.65, fill = c('black','#5928ed','#00bf7d'))
+
+text(1100,1, adj = c(1,0),watermark,col = rgb(.8,.8,.8,.4),
+     cex = 3)
 }
 dev.off()
 
