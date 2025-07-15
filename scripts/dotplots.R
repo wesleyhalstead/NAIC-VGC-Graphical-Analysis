@@ -1,5 +1,5 @@
 ### Watermark to be used
-watermark = 'HALSTEAD'
+watermark = ''
 
 ### Packages
 library(tidyverse)
@@ -45,13 +45,15 @@ dotchart(as.numeric(rev(t1)),
 dev.off()
 #####################################
 
-## Producing dotchart of placement
+## Producing dotchart of placement summary stats -- first need to calculate them
 restrictedDuosPlacement <- restrictedDuos %>% group_by(restrictedDuo) %>% summarise(avgPlacement = mean(X),
                                                                                     medPlacement = median(X),
                                                                                     highestPlacement = min(X)) %>%
   arrange((avgPlacement))
 
+## Commenting old work out
 {
+"{
 dotchart(x= rev(pull(restrictedDuosPlacement, avgPlacement)),
          labels =  rev(pull(restrictedDuosPlacement, restrictedDuo)),
          cex = 0.65, pt.cex = 1,
@@ -72,12 +74,14 @@ restrictedDuosPlacement <- restrictedDuosPlacement %>% arrange((medPlacement))
          lwd = 1.5)
   abline(v = (1:5)*200+100, lty = 2, col = rgb(1,0,0, alpha = 0.2),
          lwd = 1.5)
+}"
 }
 
 restrictedDuosPlacement <- restrictedDuosPlacement %>% arrange((highestPlacement))
 
-
+## Commenting old work out
 {
+"{
   dotchart(x= rev(pull(restrictedDuosPlacement, highestPlacement)),
            labels =  rev(pull(restrictedDuosPlacement, restrictedDuo)),
            cex = 0.65, pt.cex = 1,
@@ -86,11 +90,12 @@ restrictedDuosPlacement <- restrictedDuosPlacement %>% arrange((highestPlacement
          lwd = 1.5)
   abline(v = (0:5)*200+100, lty = 2, col = rgb(1,0,0, alpha = 0.2),
          lwd = 1.5)
+}"
 }
 
 
-
 #### Attempting to put multiple summaries with dotchart
+#######################################################
 temp1 <- as.data.frame(restrictedDuosPlacement)
 
 pdf(file = 'plots/dotchart_placement.pdf',
@@ -109,40 +114,12 @@ points(temp1$avgPlacement,86:1, col = '#00bf7d', pch = 20)
 points(temp1$medPlacement,86:1, col = '#5928ed', pch = 20)
 points(temp1$highestPlacement,86:1, pch = 20)
 
-legend(1,8, legend = c('Highest Placement','Median Placement','Mean Placement'),
+legend('bottomleft', inset = 0.01, legend = c('Highest Placement','Median Placement','Mean Placement'),
        cex = 0.65, fill = c('black','#5928ed','#00bf7d'))
 
 text(1100,1, adj = c(1,0),watermark,col = rgb(.8,.8,.8,.4),
      cex = 3)
 }
 dev.off()
+#######################################################
 
-### Trying to produce multiple placement summaries on same plot
-temp1 <- restrictedDuosPlacement %>% pivot_longer(
-  !restrictedDuo
-)
-
-sortingOrder <- rep(restrictedDuosPlacement$highestPlacement, each = 3)
-
-library(lattice)
-
-"pdf(file = 'plots/dotchart_placement.pdf',
-    height = 11,
-    width = 8.5,
-    pointsize = 12)"
-{
-dotplot(reorder(restrictedDuo,-sortingOrder)~value, data=temp1,
-        groups = name,
-        pch = 20,
-        scale=list(y=list(cex=.5)
-        ),
-        key=list(x=.99,y=0.99,corner=c(1,1), cex = 0.5,
-                 transparent = F,
-                 border = T,
-                 text = list(c('Highest Placement','Median Placement','Mean Placement')),
-                 points = list(pch= 20,20,20, cex = .75,
-                               col = palette.colors(palette = "Okabe-Ito")[c(2, 6, 4)])
-                 )
-        )
-}
-#dev.off()
