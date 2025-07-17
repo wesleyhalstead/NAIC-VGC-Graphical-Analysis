@@ -12,13 +12,15 @@ restrictedDuos <- read.csv(file = 'data/restrictedDuos.csv')
 # restrictedDuos <- restrictedDuos[restrictedDuos$playerName != '',]
 ### Add in NONE for teams with no restricteds
 restrictedDuos$restrictedDuo[restrictedDuos$restrictedDuo == ''] <- 'NONE'
+restrictedDuos <- head(restrictedDuos,100)
 ### Duos list
 duosList <- unique(restrictedDuos$restrictedDuo)
+nUnique <- length(duosList)
 
 
 ### Create empty adjacency matrix
 ### Adjacency matrix will ge generated such that a_{i,j} is the numer of wins that duo i has over duo j
-adjMat <- matrix(0,nrow = 86,ncol = 86)
+adjMat <- matrix(0,nrow = nUnique,ncol = nUnique)
 rownames(adjMat) <- duosList
 colnames(adjMat) <- duosList
 
@@ -36,7 +38,7 @@ for(i in restrictedDuos$playerName[restrictedDuos$playerName!='']){
   adjMat[tempDuoI,names(lostDuos)] <- adjMat[tempDuoI,names(lostDuos)] + lostDuos
 }
 
-save(adjMat, file = 'data/adjMat.RData')
+save(adjMat, file = 'data/adjMatTOP.RData')
 
 
 ### From this we can calculate win percentages
@@ -49,7 +51,7 @@ winPercent <- sort(winPercent)
 
 
 ### Plotting Win Percentages
-pdf(file = 'plots/dotchart_winrate.pdf',
+pdf(file = 'plots/dotchart_winrateTOP.pdf',
     height = 11,
     width = 8.5,
     pointsize = 12)
@@ -83,7 +85,7 @@ lowerBound <- pmax(winPercent2 - zStar*sqrt(winPercent2*(1-winPercent2)/(nMatche
 
 
 ## Plotting
-pdf(file = 'plots/dotchart_winrateinterval.pdf',
+pdf(file = 'plots/dotchart_winrateintervalTOP.pdf',
     height = 11,
     width = 8.5,
     pointsize = 12)
