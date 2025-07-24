@@ -8,6 +8,6 @@ Similar to popular trading card games, individuals are able to form their teams 
 
 Regulation I is known as a "double restricted" format-- allowing each team to include up to two (typically) more powerful restricted special Pokemon. Teams designed for play in double restricted formats are typically designed to support their duo of powerful restricted Pokemon and enable them to take advantage of their strong moves and unique abilities.
 
-In this repository, I aim to perform an exploratory data analysis of restricted duos, gaining insight into their performance and seeing how their teams are constructed.
+This repository aims to perform an exploratory data analysis of restricted duos, gaining insight into their performance and seeing how their teams are constructed.
 
 The data used here come from the masters division of the most recent Regulation I tournament, the North America International Championship 2025 (NAIC) and can be found [here](https://www.pokedata.ovh/standingsVGC/0000149/masters/)
