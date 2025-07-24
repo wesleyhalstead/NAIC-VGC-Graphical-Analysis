@@ -10,4 +10,4 @@ Regulation I is known as a "double restricted" format-- allowing each team to in
 
 In this repository, I aim to perform an exploratory data analysis of restricted duos, gaining insight into their performance and seeing how their teams are constructed.
 
-The data used here come from the masters division of the most recent Regulation I tournament, the North America International Championship (NAIC) and can be found [here](https://www.pokedata.ovh/standingsVGC/0000149/masters/)
+The data used here come from the masters division of the most recent Regulation I tournament, the North America International Championship 2025 (NAIC) and can be found [here](https://www.pokedata.ovh/standingsVGC/0000149/masters/)
