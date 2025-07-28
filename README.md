@@ -34,3 +34,26 @@ The usage rate chart below is not only useful for seeing overall placements, but
 <img src="plots/dotchart_placement.png" alt="Highest, median, and mean placement of restricted duos" width="80%" class = "center">
 </p>
 
+### Win Rates
+
+Overall win rates are calculated and presented in the file [matrixGenerationAndWinRates.R](scripts/matrixGenerationAndWinRates.R).
+
+This file presents both a complete look at winrates for every restricted pair as well as a series of simultaneously adjusted confidence intervals for teams that have at least ten wins and ten losses (this is a necessary restriction to easily generate confidence intervals using a normal approximation). The results of the first of these charts are rather interesting. Rather obscure duos such as ***Giratina Origin Forme & Zamazenta***, ***Mewtwo & Terapagos***, as well as a few others top out the list with over a 60% win rate. Why do these uncommon pairing perform so well? It's likely a result of the Swiss round format employed by these tournaments. If an individual using a unique team is able to make a strong 7-3 or 6-3 run before being eliminated, the win rate of their restricted pair will appear high. Similarly, a number of less skilled players attempting to copy the team of someone more skilled are able to rack up lots of losses throughout the course of the day before all being eliminated. Doing this results in low win rates for even the best performing teams at each tournament.
+<p align="center">
+<img src="plots/dotchart_winrate.png" alt="HWinrate of different duos" width="80%" class = "center">
+</p>
+
+Similar observations can be seen in the below chart with the added benefit of simultaneous confidence intervals. Removing restricted pairs with very few wins or losses gives a better picture of the actual performance of different pairs and allows us to ignore those with a small number of matches played and a lucky (or unlucky) streak. 
+
+<p align="center">
+<img src="plots/dotchart_winrateinterval.png" alt="Winrate of different duos with confidence intervals." width="80%" class = "center">
+</p>
+
+### Matchup Win Rates
+
+
+<hr>
+
+<p align="center">
+<img src="https://img.pokemondb.net/artwork/large/terapagos-terastal.jpg" alt="Terapagos" width="20%" class = "center">
+</p>
