@@ -61,7 +61,7 @@ customHeatmap <- function(m){
   colIndex <- round((m1-min(m1, na.rm = T))/max(m1 - min(m1, na.rm = T), na.rm = T)*199 + 1)
   mapCols <- (hcl.colors(200,'Temps',rev = T))[colIndex]
   mapCols[is.nan(m1)] <- '#00000000'
-  borderCols <- rep('#000000', ncol(m)*nrow(m))
+  borderCols <- rep('#00000000', ncol(m)*nrow(m))
   borderCols[is.nan(m1)] <- '#00000000'
   
   plot.new()
@@ -69,7 +69,7 @@ customHeatmap <- function(m){
   plot.window(xlim = c(0,max(row(m))+2), ylim = c(0,max(col(m))), asp = 1)
   
   rect(row(m)-1,ncol(m)-col(m),row(m),ncol(m)+1-col(m),
-       border = F,
+       border = '#ffffff',
        col = mapCols)
 
   labels1 <- sub('&','&\n', rownames(m))
@@ -94,5 +94,11 @@ customHeatmap <- function(m){
   customHeatmap(adjMat[1:10,1:10])
   dev.off()
   browseURL('plots/heatmapNoUsage.pdf')
+}
+
+{
+  png('plots/heatmapNoUsage.png', 8.5,11,unit = 'in', res = 200)
+  customHeatmap(adjMat[1:10,1:10])
+  dev.off()
 }
 
