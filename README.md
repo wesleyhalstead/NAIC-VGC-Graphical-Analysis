@@ -14,10 +14,23 @@ This repository aims to perform an exploratory data analysis of restricted duos,
 
 The data used here come from the masters division of the most recent Regulation I tournament, as of the time of writing, the North America International Championship 2025 (NAIC) and can be found [here](https://www.pokedata.ovh/standingsVGC/0000149/masters/)
 
-In the file [generateTeamLists.R](scripts/generateTeamLists.R), the JSON file is parsed and formatted into a dataframe including just the name of each individual competitor, and a single name representing restricted Pokemon used on their team. In the file [matrixGenerationAndWinRates.R](scripts/matrixGenerationAndWinRates.R), we iterate over the previous dataframe to generate an adjacency matrix $A$ such that $a_{i,j}$ is the number of wins that a restricted duo $i$ has against team $j$.
+In the file [generateTeamLists.R](scripts/generateTeamLists.R), the JSON file is parsed and formatted into a dataframe including just the name of each individual competitor, and a single name representing restricted Pokemon used on their team. In the file [matrixGenerationAndWinRates.R](scripts/matrixGenerationAndWinRates.R), we iterate over the previous dataframe to generate an adjacency matrix $A$ such that $a_{i,j}$ is the number of wins that a restricted duo $i$ has against team $j$. These are the key to constructing graphs for our network analysis.
 
 Additionally, there is a "Top Cut" adjacency matrix that is generated as well in matrixGenerationAndWinRatesTOP.R](scripts/matrixGenerationAndWinRatesTOP.R). Again, this matrix indicates which duos have victories over others; however, we only look at teams that placed in the top 100 of the final standings (about the top 10%). Since these tournaments are open signups, subsetting our data may give better insight into these matchups at a higher level.
 
 ## Analysis
 
-![Testing this out](plots/dotchart_placement.png)
+### Usage Rate and Placement
+The most immediate statistics we might look at is of the usage and placement of each of these duos. These are found in the (poorly named) file, [dotplots.R](scripts/dotplots.R). 
+
+Looking at usage rates, we see a clear front-runner in the popularity contest. The duo of ***Calyrex Ice Rider & Miradon*** are obvious favorites, representing themselves on over 200 different teams. Rounding out the top three are the pairs of ***Calyrex Shadow Rider & Zamazenta*** as well as ***Calyrex Shadow Rider & Koraidon*** who have relatively close usage rates. Although they sit clearly above the rest of the field, these two duos are still dwarfed in usage rate by the most popular team. Interestingly enough, just outside this top three is the winning pair of ***Lunala & Miraidon***. Although this pair has the fourth highest usage rate, it still falls substantially below the usage rate of the top three duos.
+<p align="center">
+<img src="plots/dotchart_usage.png" alt="Usage rates of restricted duos" width="80%" class = "center">
+</p>
+
+The usage rate chart below is not only useful for seeing overall placements, but it also can provide some insight into how difficult a team might be to succeed with. For example, the duo of ***Lunala & Miraidon***-- which was present on around 75 teams and was able to ultimately take the whole tournament-- has both an average and median placement that is much lower than many of the other teams who secured top ten finishes. While a team's final performance depends on much more than just the selection of two individual pieces, general observation might suggest that the ***Lunala & Miraidon*** combo is one that is plenty powerful, but it is difficult to pull off for the average player. Unsurprisignly, many of the teams that we see performing well are also teams with high usage rates seen before.
+
+<p align="center">
+<img src="plots/dotchart_placement.png" alt="Highest, median, and mean placement of restricted duos" width="80%" class = "center">
+</p>
+
