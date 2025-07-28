@@ -49,6 +49,7 @@ winPercent <- sort(winPercent)
 
 
 ### Plotting Win Percentages
+#################################################
 pdf(file = 'plots/dotchart_winrate.pdf',
     height = 11,
     width = 8.5,
@@ -65,6 +66,26 @@ grid(nx = NULL, ny = 87)
 points(winPercent, seq_along(winPercent), pch = 20)
 }
 dev.off()
+######################################################
+png(file = 'plots/dotchart_winrate.png',
+    height = 11,
+    width = 8.5,
+    units = 'in',
+    res = 200,
+    pointsize = 12)
+{
+  dotchart(x = winPercent,
+           labels = names(winPercent),
+           cex = 0.65, pt.cex = 1,
+           pch = 20, lcolor = rgb(0,0,0,0),,xlab = 'Win Rate')
+  title(main = list(
+    'Win Rate of Restricted Duos',
+    cex = .8))
+  grid(nx = NULL, ny = 87)
+  points(winPercent, seq_along(winPercent), pch = 20)
+}
+dev.off()
+##########################################################
 
 ## Simultaneous confidence intervals w/ Bonferroni correction
 ## Only use teams with at least 10 wins and 10 losses
@@ -83,6 +104,7 @@ lowerBound <- pmax(winPercent2 - zStar*sqrt(winPercent2*(1-winPercent2)/(nMatche
 
 
 ## Plotting
+###########################################################################
 pdf(file = 'plots/dotchart_winrateinterval.pdf',
     height = 11,
     width = 8.5,
@@ -105,6 +127,31 @@ temp <- lapply(seq_along(lowerBound), function(x) lines(c(lowerBound[x],upperBou
 points(winPercent2, seq_along(winPercent2), pch = 20)
 }
 dev.off()
-
+########################################################
+png(file = 'plots/dotchart_winrateinterval.png',
+    height = 11,
+    width = 8.5,
+    units = 'in',
+    res = 200,
+    pointsize = 12)
+{
+  dotchart(x = winPercent2,
+           labels = names(winPercent2),
+           cex = 0.65, pt.cex = 1,
+           pch = 20, lcolor = rgb(0,0,0,0),
+           xlim = c(min(lowerBound),max(upperBound)),xlab = 'Win Rate')
+  title(main = list(
+    '95% Pairwise Confidence Intervals for the Win Rate of Restriced Duos\nfor Teams with at Least 10 Wins and 10 Losses',
+    cex = 0.8))
+  grid(nx = NULL, ny = length(winPercent2)+1)
+  
+  temp <- lapply(seq_along(upperBound), function(x) lines(c(upperBound[x],upperBound[x]),c(x-0.2,x+0.2), col = rgb(0,0,0,0.3)))       
+  temp <- lapply(seq_along(lowerBound), function(x) lines(c(lowerBound[x],lowerBound[x]),c(x-0.2,x+0.2), col = rgb(0,0,0,0.3)))       
+  temp <- lapply(seq_along(lowerBound), function(x) lines(c(lowerBound[x],upperBound[x]),c(x,x), col = rgb(0,0,0,0.3)))
+  
+  points(winPercent2, seq_along(winPercent2), pch = 20)
+}
+dev.off()
+######################################################
 
 

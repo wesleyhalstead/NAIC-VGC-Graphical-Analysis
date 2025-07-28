@@ -48,6 +48,32 @@ dotchart(as.numeric(rev(t1)),
     cex = 0.8))
 }
 dev.off()
+
+
+png(file = 'plots/dotchart_usage.png',
+    height = 11,
+    width = 8.5,
+    unit  = 'in',
+    res = 200,
+    pointsize = 12)
+{
+  dotchart(as.numeric(rev(t1)),
+           labels = nt1,
+           cex = 0.65, pt.cex = 1,
+           pch = 20,
+           xlab = 'Team Appearances')
+  grid(nx = NULL, ny = NULL)
+  
+  points(as.numeric(rev(t1)), pch = 20, 1:86)
+  
+  text(200,1, adj = c(1,0),watermark,col = rgb(.8,.8,.8,.4),
+       cex = 3)
+  
+  title(main = list(
+    'Usage Rates of Restricted Duos',
+    cex = 0.8))
+}
+dev.off()
 #####################################
 
 ## Producing dotchart of placement summary stats -- first need to calculate them
@@ -132,4 +158,35 @@ title(main = list(
 }
 dev.off()
 #######################################################
+png(file = 'plots/dotchart_placement.png',
+    height = 11,
+    width = 8.5,
+    unit = 'in',
+    res = 200,
+    pointsize = 12)
+{
+  dotchart(x= rev(temp1$highestPlacement),
+           labels =  rev(temp1$restrictedDuo),
+           cex = 0.65, pt.cex = 1,
+           pch = 20, lcolor = rgb(0,0,0,0),
+           xlab = 'Place')
+  
+  grid(nx = NULL, ny = 87)
+  
+  points(temp1$avgPlacement,86:1, col = '#00bf7d', pch = 20)
+  points(temp1$medPlacement,86:1, col = '#5928ed', pch = 20)
+  points(temp1$highestPlacement,86:1, pch = 20)
+  
+  legend('bottomleft', inset = 0.01, legend = c('Highest Placement','Median Placement','Mean Placement'),
+         cex = 0.65, fill = c('black','#5928ed','#00bf7d'))
+  
+  text(1100,1, adj = c(1,0),watermark,col = rgb(.8,.8,.8,.4),
+       cex = 3)
+  
+  title(main = list(
+    'Placement Summaries of Restricted Duos',
+    cex = 0.8))
+}
+dev.off()
+##############################################################
 
