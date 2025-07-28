@@ -49,8 +49,13 @@ Similar observations can be seen in the below chart with the added benefit of si
 <img src="plots/dotchart_winrateinterval.png" alt="Winrate of different duos with confidence intervals." width="80%" class = "center">
 </p>
 
-### Matchup Win Rates
+### Head-to-Head Win Rates
+The file [headToHeadWinRates.R](scripts/headToHeadWinRates.R) calculates the head-to-head win rates of a number of popular restricted duo pairs.
 
+The chart below displays the win rate of a duo in a row when they are in a match against a the duo in the column. Tiles are left blank when not enough data is available for a good estimate. A chart such as this can give greater insight into the rock-paper-scissors game that exists in team construction. Sometimes, being strong against a number of more popular teams leaves you succeptible against those that see less play. If you are curious about the exact numbers for each match-up, a labeled version of the chart exists, and can be found [here](plots/heatmapNoUsageWText.pdf).
+<p align="center">
+<img src="plots/heatmapNoUsage.png" alt="Head-to-head win rates of different duos" width="80%" class = "center">
+</p>
 
 <hr>
 
