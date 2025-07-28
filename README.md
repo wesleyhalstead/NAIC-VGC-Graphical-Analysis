@@ -10,4 +10,14 @@ Regulation I is known as a "double restricted" format-- allowing each team to in
 
 This repository aims to perform an exploratory data analysis of restricted duos, gaining insight into their performance and seeing how their teams are constructed.
 
-The data used here come from the masters division of the most recent Regulation I tournament, the North America International Championship 2025 (NAIC) and can be found [here](https://www.pokedata.ovh/standingsVGC/0000149/masters/)
+## Data Cleaning
+
+The data used here come from the masters division of the most recent Regulation I tournament, as of the time of writing, the North America International Championship 2025 (NAIC) and can be found [here](https://www.pokedata.ovh/standingsVGC/0000149/masters/)
+
+In the file [generateTeamLists.R](scripts/generateTeamLists.R), the JSON file is parsed and formatted into a dataframe including just the name of each individual competitor, and a single name representing restricted Pokemon used on their team. In the file [matrixGenerationAndWinRates.R](scripts/matrixGenerationAndWinRates.R), we iterate over the previous dataframe to generate an adjacency matrix $A$ such that $a_{i,j}$ is the number of wins that a restricted duo $i$ has against team $j$.
+
+Additionally, there is a "Top Cut" adjacency matrix that is generated as well in matrixGenerationAndWinRatesTOP.R](scripts/matrixGenerationAndWinRatesTOP.R). Again, this matrix indicates which duos have victories over others; however, we only look at teams that placed in the top 100 of the final standings (about the top 10%). Since these tournaments are open signups, subsetting our data may give better insight into these matchups at a higher level.
+
+## Analysis
+
+![Testing this out](plots/dotchart_placement.png)
